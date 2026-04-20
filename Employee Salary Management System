@@ -1,0 +1,44 @@
+class Employee:
+    def __init__(self, emp_id, name, basic):
+        # Private attributes (encapsulation)
+        self.__id = emp_id
+        self.__name = name
+        self.__basic = basic
+        
+        self.__hra = 0
+        self.__da = 0
+        self.__tax = 0
+        self.__gross = 0
+        self.__net = 0
+
+    # Method to calculate salary
+    def calculate(self):
+        self.__hra = 0.20 * self.__basic   # 20% HRA
+        self.__da = 0.10 * self.__basic    # 10% DA
+        self.__tax = 0.05 * self.__basic   # 5% Tax
+
+        self.__gross = self.__basic + self.__hra + self.__da
+        self.__net = self.__gross - self.__tax
+
+    # Method to display details
+    def display(self):
+        print("\n--- Salary Details ---")
+        print("ID:", self.__id)
+        print("Name:", self.__name)
+        print("Basic Salary:", self.__basic)
+        print("HRA:", self.__hra)
+        print("DA:", self.__da)
+        print("Tax:", self.__tax)
+        print("Gross Salary:", self.__gross)
+        print("Net Salary:", self.__net)
+
+
+# ---- Main Program ----
+emp_id = int(input("Enter Employee ID: "))
+name = input("Enter Name: ")
+basic = float(input("Enter Basic Salary: "))
+
+e = Employee(emp_id, name, basic)
+
+e.calculate()
+e.display()
